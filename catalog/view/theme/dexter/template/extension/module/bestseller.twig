@@ -1,0 +1,70 @@
+<div class="section">
+      <div class="container">
+        <!-- row -->
+        <div class="row">
+          <!-- section title -->
+          <div class="col-md-12">
+            <div class="section-title">
+              <h3 class="title">{{ heading_title }}</h3>
+              <div id="slick-nav-bestseller" class="products-slick-nav"></div>
+            </div>
+          </div>
+          <!-- Products tab & slick -->
+          <div class="col-md-12">
+            <div class="row">
+              <div class="products-tabs">
+                  <div class="products-slick" data-nav="#slick-nav-bestseller">
+                    {% for product in products %}
+                    <div class="product">
+                      <div class="product-img">
+                        <img src="{{ product.thumb }}" alt="{{ product.name }}" class="img-responsive center-block" >
+                        <div class="product-label">
+                          {% if product.price %}
+                          {% if product.special %}
+                          <span class="sale">- {{ product.percent }}</span>
+                          {% endif %}  
+                          {% endif %}  
+                        </div>
+                      </div>
+                      <div class="product-body">
+                        <p class="product-category"><a href="{{ product.category_href }}">{{ product.category_title}}</a></p>
+                        <h3 class="product-name"><a href="{{ product.href }}">{{ product.name }}</a></h3>
+                          {% if product.price %}
+                          {% if not product.special %}
+                             <h4 class="product-price"> {{ product.price }}</h4>
+                          {% else %}
+                            <h4 class="product-price">{{ product.special }} <del class="product-old-price">{{ product.price }}</del></h4> {% endif %} 
+                         {% endif %} 
+
+                         {% if product.rating %}
+                          <div class="product-rating">
+                          {% for i in 1..5 %}
+                            {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> {% endif %}
+                            {% endfor %}
+                          </div>
+                          {% else %} 
+                            <div class="product-rating"></div>
+                          {% endif %}
+
+                        <div class="product-btns">
+                          <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+                          <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+                           <a class="quick-view" data-toggle="tooltip" href="{{ product.href }}" title="View"><i class="fa fa-eye"></i></a>
+                           <button class="add-to-cart-btn btn-cart-icon" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-basket"></i></button>
+
+                        </div>
+                      </div>
+                      <div class="add-to-cart">
+                        <button class="add-to-cart-btn" onclick="cart.add('{{ product.product_id }}');">{{ button_cart }}</button>
+                      </div>
+                    </div>
+                    {% endfor %}
+              
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- /row -->
+        </div>
+      </div>
+</div>

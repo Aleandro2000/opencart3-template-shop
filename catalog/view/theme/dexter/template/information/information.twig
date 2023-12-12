@@ -1,0 +1,42 @@
+{{ header }}
+<div id="information-information">
+  <div id="breadcrumb" class="section">
+      <!-- container -->
+      <div class="container">
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="breadcrumb-tree">
+            {% for breadcrumb in breadcrumbs %}
+            <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+             {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% if content_top %}
+    <div class="section">
+      <div class="container">
+        <div class="col-sm-12">{{ content_top }}</div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="section">
+      <div class="container">
+        <div id="content">
+         <h3>{{ heading_title }}</h3>
+          {{ description }}
+         </div> <!-- /end id content -->
+        </div> <!-- /end class container -->
+    </div><!-- /end section --> 
+   {% if content_bottom %}
+    <div class="section">
+      <div class="container">
+        <div class="col-sm-12">{{ content_bottom }}</div>
+      </div>
+    </div>
+    {% endif %}
+<!-- /end id -->
+</div>
+{{ footer }} 
