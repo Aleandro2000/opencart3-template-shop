@@ -1,12 +1,12 @@
 <div id="cart" class="btn-group btn-block">
-  <button type="button" data-toggle="dropdown" data-loading-text="{{ text_loading }}" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total">{{ text_items }}</span></button>
+  <button type="button" data-toggle="dropdown" data-loading-text="{{ text_loading }}" class="btn btn-show-cart btn-sx dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total">{{ text_items }}</span></button>
   <ul class="dropdown-menu pull-right">
     {% if products or vouchers %}
     <li>
       <table class="table table-striped">
         {% for product in products %}
         <tr>
-          <td class="text-center">{% if product.thumb %} <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-thumbnail" /></a> {% endif %}</td>
+          <td class="text-center">{% if product.thumb %} <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-thumbnail-product-cart" /></a> {% endif %}</td>
           <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% if product.option %}
             {% for option in product.option %} <br />
             - <small>{{ option.name }} {{ option.value }}</small> {% endfor %}
@@ -39,9 +39,19 @@
           </tr>
           {% endfor %}
         </table>
-        <p class="text-right"><a href="{{ cart }}"><strong><i class="fa fa-shopping-cart"></i> {{ text_cart }}</strong></a>&nbsp;&nbsp;&nbsp;<a href="{{ checkout }}"><strong><i class="fa fa-share"></i> {{ text_checkout }}</strong></a></p>
+        <div class="cart-dropdown-btn">
+          <div class="row">
+          <div class="col" style="padding: 10px 0 10px 0;">
+            <a href="{{ cart }}"><strong><i class="fa fa-shopping-cart"></i> {{ text_cart }}</strong></a>
+          </div>
+          <div class="col" style="padding: 10px 0 10px 0;">
+            <a href="{{ checkout }}"><strong><i class="fa fa-share"></i> {{ text_checkout }}</strong></a>
+          </div>
+          </div>
+        </div>
       </div>
     </li>
+
     {% else %}
     <li>
       <p class="text-center">{{ text_empty }}</p>

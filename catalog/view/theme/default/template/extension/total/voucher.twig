@@ -8,7 +8,7 @@
       <div class="input-group">
         <input type="text" name="voucher" value="{{ voucher }}" placeholder="{{ entry_voucher }}" id="input-voucher" class="form-control" />
         <span class="input-group-btn">
-        <input type="submit" value="{{ button_voucher }}" id="button-voucher" data-loading-text="{{ text_loading }}"  class="btn btn-primary" />
+        <input type="submit" value="{{ button_voucher }}" id="button-voucher" data-loading-text="{{ text_loading }}"  class="btn btn-success" />
         </span> </div>
       <script type="text/javascript"><!--
 $('#button-voucher').on('click', function() {
@@ -27,7 +27,7 @@ $('#button-voucher').on('click', function() {
 			$('.alert-dismissible').remove();
 			
 			if (json['error']) {
-				$('.breadcrumb').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('#breadcrumb').after('<div class="container alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 			}

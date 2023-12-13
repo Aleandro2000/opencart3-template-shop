@@ -1,26 +1,37 @@
 {{ header }}
-<div id="product-compare" class="container">
-  <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
-  </ul>
-  {% if success %}
-  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-  {% endif %}
-  <div class="row">{{ column_left }}
-    {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
-    {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
-    {% else %}
-    {% set class = 'col-sm-12' %}
-    {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
-      {% if products %}
+<div id="product-compare">
+  <div id="breadcrumb" class="section">
+      <!-- container -->
+      <div class="container">
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="breadcrumb-tree">
+            {% for breadcrumb in breadcrumbs %}
+            <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+             {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if content_top %}
+      <div class="section">
+        <div class="container">
+          <div class="col-sm-12">{{ content_top }}</div>
+        </div>
+      </div>
+      {% endif %}
+    <div class="section">
+      <div class="container">
+       {% if success %}
+        <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        {% endif %}
+        <div id="content">
+        <h3>{{ heading_title }}</h3>
+        {% if products %}
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -67,7 +78,7 @@
         <tr>
           <td>{{ text_rating }}</td>
           {% for product in products %}
-          <td class="rating"> {% for i in 1..5 %}
+          <td class="product-rating"> {% for i in 1..5 %}
             {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> {% endif %}
             {% endfor %} <br/>
             {{ product.reviews }}</td>
@@ -124,7 +135,116 @@
         <div class="pull-right"><a href="{{ continue }}" class="btn btn-default">{{ button_continue }}</a></div>
       </div>
       {% endif %}
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+         </div> <!-- /end id content -->
+        </div> <!-- /end class container -->
+    </div><!-- /end section --> 
+   {% if content_bottom %}
+    <div class="section">
+      <div class="container">
+        <div class="col-sm-12">{{ content_bottom }}</div>
+      </div>
+    </div>
+    {% endif %}
+<!-- /end id -->
 </div>
+<script type="text/javascript"><!--
+var cart = {
+  'add': function(product_id, quantity) {
+    $.ajax({
+      url: 'index.php?route=checkout/cart/add',
+      type: 'post',
+      data: 'product_id=' + product_id + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
+      dataType: 'json',
+      beforeSend: function() {
+        $('#cart > button').button('loading');
+      },
+      complete: function() {
+        $('#cart > button').button('reset');
+      },
+      success: function(json) {
+        $('.alert-dismissible, .text-danger').remove();
+
+        if (json['redirect']) {
+          location = json['redirect'];
+        }
+
+        if (json['success']) {
+          $('#content').parent().before('<div class="container alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+          // Need to set timeout otherwise it wont update the total
+          setTimeout(function () {
+            $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-basket"></i> ' + json['total'] + '</span>');
+          }, 100);
+
+          $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+          $('#cart > ul').load('index.php?route=common/cart/info ul li');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  },
+  'update': function(key, quantity) {
+    $.ajax({
+      url: 'index.php?route=checkout/cart/edit',
+      type: 'post',
+      data: 'key=' + key + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
+      dataType: 'json',
+      beforeSend: function() {
+        $('#cart > button').button('loading');
+      },
+      complete: function() {
+        $('#cart > button').button('reset');
+      },
+      success: function(json) {
+        // Need to set timeout otherwise it wont update the total
+        setTimeout(function () {
+          $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-basket"></i> ' + json['total'] + '</span>');
+        }, 100);
+
+        if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+          location = 'index.php?route=checkout/cart';
+        } else {
+          $('#cart > ul').load('index.php?route=common/cart/info ul li');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  },
+  'remove': function(key) {
+    $.ajax({
+      url: 'index.php?route=checkout/cart/remove',
+      type: 'post',
+      data: 'key=' + key,
+      dataType: 'json',
+      beforeSend: function() {
+        $('#cart > button').button('loading');
+      },
+      complete: function() {
+        $('#cart > button').button('reset');
+      },
+      success: function(json) {
+        // Need to set timeout otherwise it wont update the total
+        setTimeout(function () {
+          $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-basket"></i> ' + json['total'] + '</span>');
+        }, 100);
+
+        if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+          location = 'index.php?route=checkout/cart';
+        } else {
+          $('#cart > ul').load('index.php?route=common/cart/info ul li');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  }
+}
+
+--></script>
 {{ footer }} 

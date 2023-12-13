@@ -1,47 +1,96 @@
-<footer>
-  <div class="container">
-    <div class="row">
-      {% if informations %}
-      <div class="col-sm-3">
-        <h5>{{ text_information }}</h5>
-        <ul class="list-unstyled">
-         {% for information in informations %}
-          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
-          {% endfor %}
-        </ul>
+<!-- FOOTER -->
+    <footer id="footer">
+      <!-- top footer -->
+      <div class="section">
+        <!-- container -->
+        <div class="container">
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-4 col-xs-6">
+              <div class="footer">
+                {% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>
+                {% else %}
+                 <h1><a href="{{ home }}">{{ name }}</a></h1>
+                {% endif %} 
+                <ul class="footer-links">
+                  <li><a href="#"><i class="fa fa-map-marker"></i>{{ address }}</a></li>
+                  <li><a href="#"><i class="fa fa-phone"></i>{{ telephone }}</a></li>
+                  <li><a href="#"><i class="fa fa-envelope-o"></i>{{ email }}</a></li>
+                </ul>
+                 <ul class="footer-social">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                  <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                </ul>
+              </div>
+            </div>
+           
+             {% if informations %}
+            <div class="col-md-3 col-xs-6">
+              <div class="footer">
+                <h3 class="footer-title">{{ text_information }}</h3>
+                <ul class="footer-links">
+                 {% for information in informations %}
+                  <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+                {% endfor %}
+                  <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+                </ul>
+
+              </div>
+            </div>
+             {% endif %}
+              <div class="clearfix visible-xs"></div>
+            <div class="col-md-3 col-xs-6">
+              <div class="footer">
+                <h3 class="footer-title"> {{ text_extra }}</h3>
+                <ul class="footer-links">
+                  <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+                  <li><a href="{{ return }}">{{ text_return }}</a></li>
+                  <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+                  <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+                 <li><a href="{{ special }}">{{ text_special }}</a></li>
+                </ul>
+              </div>
+            </div>
+           <div class="col-md-2 col-xs-6">
+              <div class="footer">
+                 <h3 class="footer-title"> {{ text_account }} </h3>
+                <ul class="footer-links">
+                  <li><a href="{{ account }}">{{ text_account }}</a></li>
+                  <li><a href="{{ order }}">{{ text_order }}</a></li>
+                  <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+                  <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /row -->
+        </div>
+        <!-- /container -->
       </div>
-      {% endif %}
-      <div class="col-sm-3">
-        <h5>{{ text_service }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
-          <li><a href="{{ return }}">{{ text_return }}</a></li>
-          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
-        </ul>
+      <!-- /top footer -->
+
+      <!-- bottom footer -->
+      <div id="bottom-footer" class="section">
+        <div class="container">
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <span class="copyright">
+               {{ powered }}
+              </span>
+            </div>
+          </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
       </div>
-      <div class="col-sm-3">
-        <h5>{{ text_extra }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
-          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
-          <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
-          <li><a href="{{ special }}">{{ text_special }}</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-3">
-        <h5>{{ text_account }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ account }}">{{ text_account }}</a></li>
-          <li><a href="{{ order }}">{{ text_order }}</a></li>
-          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
-          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
-        </ul>
-      </div>
-    </div>
-    <hr>
-    <p>{{ powered }}</p>
-  </div>
-</footer>
+      <!-- /bottom footer -->
+    </footer>
+    <!-- /FOOTER -->
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
 {% endfor %}
@@ -49,7 +98,7 @@
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
 <!--
-OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
-Please donate via PayPal to donate@opencart.com
+ Theme is free use and you are free to remove backlink blogitcode.com but link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.. if you want, but its generally accepted practise to make a small donation
+ via PayPal to https://www.paypal.com/paypalme/huudinh
 //-->
 </body></html>

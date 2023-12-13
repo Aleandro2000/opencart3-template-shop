@@ -1,3 +1,4 @@
+{% if banner %}
 <div class="slideshow swiper-viewport">
   <div id="slideshow{{ module }}" class="swiper-container">
     <div class="swiper-wrapper"> {% for banner in banners %}
@@ -24,3 +25,4 @@ $('#slideshow{{ module }}').swiper({
 	loop: true
 });
 //--></script>
+{% endif %}
