@@ -11,6 +11,9 @@ $_['text_your_address']    = 'Adresele tale';
 $_['text_newsletter']      = 'Newsletter';
 $_['text_your_password']   = 'Parola dvs.';
 $_['text_agree']           = 'Am citit și sunt de acord cu <a href="%s" class="modal-link"><b>%s</b></a>';
+$_['text_hasbusiness']     = 'Ai o afacere?';
+$_['text_hasbusiness_yes'] = 'DA';
+$_['text_hasbusiness_no']  = 'NU';
 
 // Entry
 $_['entry_customer_group'] = 'Grupul de clienți';
@@ -28,6 +31,9 @@ $_['entry_zone']           = 'Județ';
 $_['entry_newsletter']     = 'Subscribe';
 $_['entry_password']       = 'Parola';
 $_['entry_confirm']        = 'Confirmă parola';
+$_['entry_hasbusiness']    = 'Alegeți opțiunea care se potriveste in cazul dumneavoastră';
+$_['entry_company_name']   = 'Numele Companiei';
+$_['entry_taxid']          = 'CUI';
 
 // Error
 $_['error_exists']         = 'Avertizare: Pe această adresă de e-mail există deja un cont!';
@@ -45,3 +51,6 @@ $_['error_confirm']        = 'Parola și confirmarea parolei nu se potrivesc!';
 $_['error_agree']          = 'Avertizare: Trebuie să fiți de acord cu %s!';
 $_['error_custom_field']   = '%s este obligatoriu!';
 $_['error_regex']          = '%s nu este o intrare validă!';
+$_['error_hasbusiness']    = 'Avertizare: Trebuie să selectați o opțiune!';
+$_['error_company_name']   = 'Numele companiei trebuie să aibă între 1 și 64 de caractere!';
+$_['error_taxid']          = 'CUI-ul trebuie să aibă între 1 și 64 de caractere!';

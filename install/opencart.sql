@@ -1006,6 +1006,8 @@ CREATE TABLE `oc_customer` (
   `lastname` varchar(32) NOT NULL,
   `email` varchar(96) NOT NULL,
   `telephone` varchar(32) NOT NULL,
+  `company_name` varchar(64) NULL,
+  `taxid` varchar(32) NULL,
   `fax` varchar(32) NOT NULL,
   `password` varchar(40) NOT NULL,
   `salt` varchar(9) NOT NULL,

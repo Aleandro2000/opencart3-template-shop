@@ -85,6 +85,35 @@
               <div class="text-danger">{{ error_telephone }}</div>
               {% endif %} </div>
           </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-hasbusiness">{{ text_hasbusiness }}</label>
+            <div class="col-sm-10">
+              <select name="hasbusiness" value="false" placeholder="{{ entry_hasbusiness }}" id="input-hasbusiness" class="form-control">
+                <option value="false">{{text_hasbusiness_no}}</option>
+                <option value="true">{{text_hasbusiness_yes}}</option>
+              </select>
+              {% if error_hasbusiness %}
+              <div class="text-danger">{{ error_hasbusiness }}</div>
+              {% endif %} </div>
+          </div>
+          <div id="business-details" style="display: none;">
+            <div class="form-group required">
+              <label class="col-sm-2 control-label" for="input-company_name">{{ entry_company_name }}</label>
+              <div class="col-sm-10">
+                <input type="tel" name="company_name" value="{{ company_name }}" placeholder="{{ entry_company_name }}" id="input-company_name" class="form-control" />
+                {% if error_company_name %}
+                <div class="text-danger">{{ error_company_name }}</div>
+                {% endif %} </div>
+            </div>
+            <div class="form-group required">
+              <label class="col-sm-2 control-label" for="input-taxid">{{ entry_taxid }}</label>
+              <div class="col-sm-10">
+                <input type="tel" name="taxid" value="{{ taxid }}" placeholder="{{ entry_taxid }}" id="input-taxid" class="form-control" />
+                {% if error_taxid %}
+                <div class="text-danger">{{ error_taxid }}</div>
+                {% endif %} </div>
+            </div>
+          </div>
           {% for custom_field in custom_fields %}
           {% if custom_field.type == 'select' %}
           <div id="custom-field{{ custom_field.custom_field_id }}" class="form-group custom-field" data-sort="{{ custom_field.sort_order }}">
@@ -345,6 +374,23 @@ $('input[name=\'customer_group_id\']').on('change', function() {
 $('input[name=\'customer_group_id\']:checked').trigger('change');
 //--></script> 
 <script type="text/javascript"><!--
+function hasBusiness() {
+  const hasbusiness = $('#input-hasbusiness').val();
+  if (hasbusiness === 'true') {
+    $('#input-company_name').prop('required', true);
+    $('#input-taxid').prop('required', true);
+    $('#business-details').show();
+  } else {
+    $('#input-company_name').prop('required', false);
+    $('#input-taxid').prop('required', false);
+    $('#business-details').hide();
+  }
+}
+
+$('select[id^=\'input-hasbusiness\']').on('change', function () {
+  hasBusiness();
+});
+
 $('button[id^=\'button-custom-field\']').on('click', function() {
   var element = this;
 

@@ -96,6 +96,24 @@ class ControllerAccountRegister extends Controller {
 		} else {
 			$data['error_confirm'] = '';
 		}
+		
+		if (isset($this->error['error_hasbusiness'])) {
+			$data['error_hasbusiness'] = $this->error['error_hasbusiness'];
+		} else {
+			$data['error_hasbusiness'] = '';
+		}
+		
+		if (isset($this->error['error_company_name'])) {
+			$data['error_company_name'] = $this->error['error_company_name'];
+		} else {
+			$data['error_company_name'] = '';
+		}
+		
+		if (isset($this->error['error_taxid'])) {
+			$data['error_taxid'] = $this->error['error_taxid'];
+		} else {
+			$data['error_taxid'] = '';
+		}
 
 		$data['action'] = $this->url->link('account/register', '', true);
 
@@ -141,6 +159,24 @@ class ControllerAccountRegister extends Controller {
 			$data['telephone'] = $this->request->post['telephone'];
 		} else {
 			$data['telephone'] = '';
+		}
+		
+		if (isset($this->request->post['hasbusiness'])) {
+			$data['hasbusiness'] = $this->request->post['hasbusiness'];
+		} else {
+			$data['hasbusiness'] = false;
+		}
+		
+		if (isset($this->request->post['company_name'])) {
+			$data['company_name'] = $this->request->post['company_name'];
+		} else {
+			$data['company_name'] = '';
+		}
+		
+		if (isset($this->request->post['taxid'])) {
+			$data['taxid'] = $this->request->post['taxid'];
+		} else {
+			$data['taxid'] = '';
 		}
 
 		// Custom Fields
