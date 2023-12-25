@@ -94,6 +94,8 @@ $_['entry_points']              = 'Puncte';
 $_['entry_name']                = 'Nume client';
 $_['entry_ip']                  = 'IP';
 $_['entry_date_added']          = 'Data adăugării';
+$_['entry_company_name']        = 'Numele Companiei';
+$_['entry_taxid']               = 'CUI';
 
 // Button
 $_['button_order']              = 'Comenzi';
@@ -127,3 +129,5 @@ $_['error_bank_account_name']   = 'Numele contului este obligatoriu!';
 $_['error_bank_account_number'] = 'Numărul de cont este obligatoriu!';
 $_['error_custom_field']        = '%s este obligatoriu!';
 $_['error_regex']               = '%s nu este o intrare validă!';
+$_['error_company_name'] = 'Numele companiei trebuie să aibă între 1 și 64 de caractere!';
+$_['error_taxid']        = 'CUI-ul trebuie să aibă între 1 și 64 de caractere!';

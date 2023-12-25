@@ -576,6 +576,18 @@ class ControllerCustomerCustomer extends Controller {
 		} else {
 			$data['error_telephone'] = '';
 		}
+		
+		if (isset($this->error['company_name'])) {
+			$data['error_company_name'] = $this->error['company_name'];
+		} else {
+			$data['error_company_name'] = '';
+		}
+		
+		if (isset($this->error['taxid'])) {
+			$data['error_taxid'] = $this->error['taxid'];
+		} else {
+			$data['error_taxid'] = '';
+		}
 
 		if (isset($this->error['tracking'])) {
 			$data['error_tracking'] = $this->error['tracking'];
@@ -735,6 +747,22 @@ class ControllerCustomerCustomer extends Controller {
 			$data['telephone'] = $customer_info['telephone'];
 		} else {
 			$data['telephone'] = '';
+		}
+		
+		if (isset($this->request->post['company_name'])) {
+			$data['company_name'] = $this->request->post['company_name'];
+		} elseif (!empty($customer_info)) {
+			$data['company_name'] = $customer_info['company_name'];
+		} else {
+			$data['company_name'] = '';
+		}
+		
+		if (isset($this->request->post['taxid'])) {
+			$data['taxid'] = $this->request->post['taxid'];
+		} elseif (!empty($customer_info)) {
+			$data['taxid'] = $customer_info['taxid'];
+		} else {
+			$data['taxid'] = '';
 		}
 
 		if (isset($this->request->post['custom_field'])) {

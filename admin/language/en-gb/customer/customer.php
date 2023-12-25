@@ -82,6 +82,8 @@ $_['entry_points']              = 'Points';
 $_['entry_name']                = 'Customer Name';
 $_['entry_ip']                  = 'IP';
 $_['entry_date_added']          = 'Date Added';
+$_['entry_company_name']        = 'Company Name';
+$_['entry_taxid']               = 'TaxID';
 
 // Help
 $_['help_safe']                 = 'Set to true to avoid this customer from being caught by the anti-fraud system';
@@ -112,3 +114,5 @@ $_['error_cheque']              = 'Cheque Payee Name required!';
 $_['error_paypal']              = 'PayPal Email Address does not appear to be valid!';
 $_['error_bank_account_name']   = 'Account Name required!';
 $_['error_bank_account_number'] = 'Account Number required!';
+$_['error_company_name']        = 'Company Name must be between 1 and 64 characters!';
+$_['error_taxid']               = 'TaxID must be between 1 and 64 characters!';

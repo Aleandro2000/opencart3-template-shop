@@ -13,6 +13,8 @@ $_['entry_firstname']    = 'Prenume';
 $_['entry_lastname']     = 'Nume';
 $_['entry_email']        = 'E-Mail:';
 $_['entry_telephone']    = 'Telefon';
+$_['entry_company_name'] = 'Numele Companiei';
+$_['entry_taxid']        = 'CUI';
 
 // Error
 $_['error_exists']       = 'Avertizare: Pe această adresă de e-mail există deja un cont!';
@@ -22,3 +24,5 @@ $_['error_email']        = 'Adresa de e-mail nu pare a fi validă!';
 $_['error_telephone']    = 'Telefonul trebuie să aibă între 3 și 32 de caractere!';
 $_['error_custom_field'] = '%s este obligatoriu!';
 $_['error_regex']        = '%s nu este o intrare validă!';
+$_['error_company_name'] = 'Numele companiei trebuie să aibă între 1 și 64 de caractere!';
+$_['error_taxid']        = 'CUI-ul trebuie să aibă între 1 și 64 de caractere!';
