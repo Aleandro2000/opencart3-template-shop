@@ -14,3 +14,4 @@ $_['button_cancel'] = 'Anulare';
 // Error
 $_['error_file'] = 'Eroare: Format de fișier invalid!';
 $_['error_upload'] = 'Eroare: Încărcarea fișierului a eșuat!';
+?>

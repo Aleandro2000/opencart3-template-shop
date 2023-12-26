@@ -8,7 +8,6 @@ class ModelExtensionModuleImportProducts extends Model {
                 model = '" . $this->db->escape($product['model']) . "',
                 price = '" . (float)$product['price'] . "',
                 quantity = '" . (int)$product['quantity'] . "'
-                // Add other product fields as needed
             ");
 
             $product_id = $this->db->getLastId();

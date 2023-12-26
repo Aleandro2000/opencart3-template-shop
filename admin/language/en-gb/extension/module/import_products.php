@@ -14,3 +14,4 @@ $_['button_cancel'] = 'Cancel';
 // Error
 $_['error_file'] = 'Error: Invalid file format!';
 $_['error_upload'] = 'Error: File upload failed!';
+?>
